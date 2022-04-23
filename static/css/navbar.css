@@ -1,0 +1,17 @@
+nav {
+    background-color:#90ADCD;
+    border-bottom: 1px solid #00000017;
+}
+
+.dropdown li{position:relative;}
+ul.sub-menu ul { position:absolute;left:0;top:100%}
+
+
+.navbar-brand {
+    margin:5px 10%;
+}
+
+.navbar-brand.h1 {
+    font-size: 25px;
+}
+

@@ -1,0 +1,33 @@
+#home-content {
+    height:100%;
+    width:100%;
+    margin:auto;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#button-getstarted {
+    width: fit-content;
+    background-color: #58799c;
+}
+
+#home-paragraph {
+    position:relative;
+    top:15%;
+    left:10%;
+}
+
+#home-paragraph h1 {
+    font-size: 96px;
+}
+
+#home-paragraph p {
+    font-size: 25px;
+}
+
+#home-image { 
+    position:relative;
+    top:10%;
+    height: 500px;
+    width:auto;
+}

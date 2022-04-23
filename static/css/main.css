@@ -1,0 +1,50 @@
+* {
+    padding: 0;
+    margin: 0;
+    bottom: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin:0;
+    padding:0;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    margin-left:auto;
+    margin-right:auto;
+    
+}
+
+.logged-in {
+    width:100%;
+    height:100vh;
+    background-color:#90ADCD;
+}
+
+.horizontal {
+    flex-direction: row;
+}
+
+.vertical {
+    flex-direction: column;
+}
+
+.center {
+    align-items: center;
+}
+
+.between {
+    justify-content: space-between;
+}
+
+.content {
+    display:flex;
+}

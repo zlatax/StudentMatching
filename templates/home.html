@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+StuMatch - Home
+{% endblock %}
+
+{% block header %}
+{% include 'partials/navbar-home.html' %}
+{% endblock %}
+
+{% block main %}
+<main class="logged-in">
+    <div class="content horizontal between" id="home-content">
+        <div class="content vertical" id="home-paragraph">
+            <h1>Find the<br>peanut butter<br>to your jelly.</h1> 
+            <p>We help connect  like-minded students through <br>commonalities in institution, major, subjects and general interests!</p>
+            <br>
+            <button type="button" class="btn btn-primary btn-lg" id="button-getstarted">Get Started</button>
+        </div>
+        <img class="img-fluid" id="home-image" src="{{ url_for('static', filename='images/home_image.png') }}" alt="?">
+    </div>           
+</main>
+{% endblock %}
