@@ -1,2 +1,0 @@
-username=usr
-password=w9Tm4QNnnAFauWfB
