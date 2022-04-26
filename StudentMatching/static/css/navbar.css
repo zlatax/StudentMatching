@@ -7,6 +7,10 @@ nav {
 ul.sub-menu ul { position:absolute;left:0;top:100%}
 
 
+.dropdown-item#item {
+    background-color: #ffffff;
+}
+
 .navbar-brand {
     margin:5px 10%;
 }
