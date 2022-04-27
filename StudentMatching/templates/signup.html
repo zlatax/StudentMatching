@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+StuMatch - Home
+{% endblock %}
+
+{% block header %}
+{% include 'partials/navbar-home.html' %}
+{% endblock %}
+
+{% block main %}
+<main>
+    <div class="content horizontal between" id="home-content">
+        <h1>Sign Up</h1> 
+        <div class="container vertical">
+            <form action="/auth/signup" method="post">
+                <div class="form-group">
+                    <label for="displayName">Display Name (How others find you)</label>
+                    <input type="text" class="form-control" name="displayName" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail">Email address</label>
+                  <input type="email" class="form-control" name="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword1">Password</label>
+                    <input type="password" id="inputPassword1" class="form-control mx-sm-3" aria-describedby="passwordHelpInline">
+                    <small id="passwordHelpInline" class="text-muted">
+                      Must be 8-20 characters long.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword2">Password</label>
+                    <input type="password" id="inputPassword2" class="form-control mx-sm-3" aria-describedby="passwordHelpInline">
+                    <small id="passwordHelpInline" class="text-muted">
+                        Re-enter password.
+                    </small>
+                </div>
+                <button type="submit" value="submit" class="btn btn-primary">Sign Up</button>
+              </form>
+        </div>
+    </div>           
+</main>
+{% endblock %}

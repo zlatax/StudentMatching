@@ -11,8 +11,9 @@ StuMatch - Dashboard
 {% block main %}
 <main class="logged-in">
     <div class="content vertical">
-        <h1>Hi, {{username}}!</h1>
-        <div class="content horizontal"> 
+        <h1>Hi, {{session['user']['name']}}!</h1>
+        <h2>{{session['user']['email']}}</h2>
+        <!-- <div class="content horizontal"> 
             <div class="content vertical">
                 <h2>Upcoming friends</h2>
                 {% for i in matched_friends %}
@@ -28,7 +29,7 @@ StuMatch - Dashboard
                 <h2>Already friends</h2>
                 <div></div>
             </div>
-        </div>
+        </div> -->
     </div>
 </main>
 {% endblock %}
