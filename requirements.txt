@@ -3,7 +3,7 @@ pandas
 pip
 bcrypt
 certifi
-pymongo[encryption,srv]
+pymongo[srv]
 gunicorn
 
 Flask == 2.1.1
