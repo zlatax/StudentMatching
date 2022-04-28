@@ -50,6 +50,10 @@ main {
     justify-content: space-around;
 }
 
+.centered {
+    justify-content: center;
+}
+
 .center {
     align-items: center;
 }
@@ -63,12 +67,12 @@ main {
 }
 
 /* Login Page Styling */
-#login-title {
+#login-title, #signup-title{
     font-size:100px;
     margin:0px 0px;
 }
 
-#login-form {
+#login-form, #signup-form {
     background-color: rgb(255, 255, 255);
     padding:10px;
     margin:0px 10px;
@@ -86,3 +90,6 @@ main {
 }
 
 /* Sign up form styling */
+#signup-form-container {
+    width:fit-content;
+}

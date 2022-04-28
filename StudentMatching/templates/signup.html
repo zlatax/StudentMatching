@@ -10,9 +10,9 @@ StuMatch - Home
 
 {% block main %}
 <main class="home">
-    <div class="content horizontal between center" id="home-content">
-        <h1>Sign Up</h1> 
-        <div class="container vertical">
+    <div class="content horizontal around center" id="signup-content">
+        <h1 id="signup-title">Sign Up</h1> 
+        <div class="vertical" id="signup-form-container">
             <p>{{message}}</p>
             <form action="/auth/signup" method="post" id="signup-form">
                 <div class="form-group">
