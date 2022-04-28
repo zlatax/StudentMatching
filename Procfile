@@ -1,1 +1,1 @@
-web: gunicorn wsgi:StudentMatching
+web: gunicorn wsgi:app
