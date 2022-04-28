@@ -8,6 +8,9 @@ from flask_pymongo import PyMongo
 from pymongo.errors import DuplicateKeyError, OperationFailure
 from bson.objectid import ObjectId
 from bson.errors import InvalidId
+from bson.json_util import loads, dumps
+
+from .extensions import JSONEncoder
 
 
 def get_db():
@@ -27,9 +30,9 @@ def get_db():
 db = LocalProxy(get_db)
 
 # Checks whether the user credentials exist and password matches the registered email.
-def verify_user(email, hashed_password):
+def verify_user(email, password):
     found = db.users.find_one({'email':email})
-    if found and bcrypt.checkpw(found['password'].encode('utf-8'),hashed_password.encode('utf-8')):
+    if found and bcrypt.checkpw(password.encode('UTF-8'), found['password'].encode('UTF-8')):
         return (True, found)
     else: 
         return (False, None)
@@ -48,7 +51,7 @@ def add_user(name, email, hashed_password):
         new_user = {
             'name': name,
             'email': email,
-            'password': hashed_password
-        }
-        db.users.insert_one(new_user)
-        return (True, db.users.find_one({'name':name, 'email':email}) )
+            'password': hashed_password.decode()}
+        result = db.users.insert_one(new_user)
+        user = db.users.find_one({'email':email})
+        return (True, user)

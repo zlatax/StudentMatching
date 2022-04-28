@@ -3,7 +3,7 @@ pandas
 pip
 bcrypt
 certifi
-pymongo[srv]
+pymongo[encryption,srv]
 
 Flask == 2.1.1
 Flask-PyMongo == 2.3.0

@@ -1,6 +1,6 @@
 from dotenv import dotenv_values
 from flask import Flask
-
+from secrets import token_bytes
 
 from .extensions import mongo, ca
 
@@ -10,7 +10,7 @@ from .api.auth import auth
 
 def create_app(config_obj = "StudentMatching.settings"):
     app = Flask(__name__)
-    app.secret_key="random"
+    app.secret_key=token_bytes(10)
 
     app.config.from_object(config_obj)
 

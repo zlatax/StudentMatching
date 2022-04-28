@@ -4,7 +4,14 @@ import bcrypt
 from ..db import verify_user, add_user
 from ..extensions import mongo, salt
 
+USER_INFO = ['name', 'email']
+
 auth = Blueprint('auth', __name__, url_prefix="/auth")
+
+def set_user_session(usr):
+    session['user'] = dict()
+    for i in USER_INFO:
+        session['user'][i] = usr[i]
 
 @auth.route("/login", methods=['post', 'get'])
 def login():
@@ -17,7 +24,8 @@ def login():
         user_found = verify_user(userEmail, password)
 
         if user_found[0]:
-            session['user'] = user_found[1]
+            set_user_session(user_found[1])
+            # session['user'] = user_found[1]
             return redirect(url_for("student.dashboard"))
         else:
             message = "Email Address is not registered or password is not correct!"
@@ -45,10 +53,11 @@ def signup():
             message = 'Passwords should match!'
             return render_template('signup.html', message=message)
         else:
-            hashed_password = bcrypt.hashpw(password2.encode('utf-8'), salt)
+            hashed_password = bcrypt.hashpw(password2.encode(), salt)
             register = add_user(displayName, email, hashed_password)
             if register[0]:
-                session["user"] = register[1]
+                set_user_session(register[1])
+                # session["user"] = register[1]
                 return redirect(url_for("student.dashboard"))
             else:
                 message = register[1]
