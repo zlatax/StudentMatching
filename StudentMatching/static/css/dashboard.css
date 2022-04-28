@@ -1,0 +1,34 @@
+#dashboard {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#dashboard .content {
+    background-color: aliceblue;
+    padding:10px;
+    border-radius: 10px;
+    margin: 10px 20px;
+    width:fit-content;
+}
+
+/* Matched (or already) friends quick-view */
+
+#friend-quickview.container-fluid {
+    width:fit-content;
+}
+
+#friend-quickview.content {
+    width:fit-content;
+    border:3px solid rgba(0, 0, 0, 0.546);
+    border-radius: 5px;
+    margin:5px;
+    display: flex;
+    flex-direction:column;
+    
+}
+
+#friends-list {
+    display:flex;
+    flex-flow:row wrap;
+}

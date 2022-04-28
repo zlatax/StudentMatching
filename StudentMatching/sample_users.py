@@ -1,0 +1,1 @@
+users = [{'name':f"friend-{i}", 'institution':"unimelb", 'match_rate':"90%"} for i in range(1,10)]

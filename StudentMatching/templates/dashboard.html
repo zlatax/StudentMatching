@@ -10,9 +10,31 @@
 
 {% block main %}
 <main class="logged-in">
-    <div class="content vertical">
+    <div class="content">
         <h1>Hi, {{user['name']}}!</h1>
         <h2>{{user['email']}}</h2>
+    </div>
+    <div class="container-fluid horizontal" id="dashboard"> 
+        <div class="content vertical">
+            <h2>Upcoming friends</h2>
+            <div class="container-fluid" id="friends-list">
+                {% for usr in matched_usrs %}
+                    {% with username=usr['name'], institution=usr['institution'], match_rate=usr['match_rate'] %}
+                        {% include 'partials/friend-quickview.html' %}
+                    {% endwith %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="content vertical">
+            <h2>Already friends</h2>
+            <div class="container-fluid" id="friends-list">
+                {% for usr in matched_usrs %}
+                    {% with username=usr['name'], institution=usr['institution'], match_rate=usr['match_rate'] %}
+                        {% include 'partials/friend-quickview.html' %}
+                    {% endwith %}
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </main>
 {% endblock %}

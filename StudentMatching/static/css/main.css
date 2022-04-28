@@ -26,8 +26,12 @@ main {
     
 }
 
-.logged-in {
+.home {
     padding:20px 10px;
+}
+
+.logged-in {
+    padding:50px 10%;
 }
 
 .horizontal {
