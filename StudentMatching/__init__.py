@@ -2,23 +2,20 @@ from dotenv import dotenv_values
 from flask import Flask
 
 
-from .extensions import mongo
+from .extensions import mongo, ca
 
 from .main import main
-from .student_services import student
-from .auth import auth
+from .api.student_services import student
+from .api.auth import auth
 
 def create_app(config_obj = "StudentMatching.settings"):
     app = Flask(__name__)
-    app.secret_key="hell"
+    app.secret_key="random"
 
     app.config.from_object(config_obj)
 
     app.config["SESSION_PERMANENT"] = False
     app.config["SESSION_TYPE"] = "filesystem"
-
-    ## initialise db connection
-    mongo.init_app(app)
 
     ## register blueprints
     app.register_blueprint(main) # /

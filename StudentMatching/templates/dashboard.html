@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-StuMatch - Dashboard
+    StuMatch - Dashboard
 {% endblock %}
 
 {% block header %}
@@ -11,25 +11,8 @@ StuMatch - Dashboard
 {% block main %}
 <main class="logged-in">
     <div class="content vertical">
-        <h1>Hi, {{session['user']['name']}}!</h1>
-        <h2>{{session['user']['email']}}</h2>
-        <!-- <div class="content horizontal"> 
-            <div class="content vertical">
-                <h2>Upcoming friends</h2>
-                {% for i in matched_friends %}
-                    {% with username=i.username, institution=i.institution, match-rate=i.match_rate %}
-                        {% include 'partials/friend-quickview.html' %}
-                    {% endwith %}
-                {% endfor %}
-                <div class="content" id="friend-quickview">
-
-                </div>
-            </div>
-            <div class="content vertical">
-                <h2>Already friends</h2>
-                <div></div>
-            </div>
-        </div> -->
+        <h1>Hi, {{user['name']}}!</h1>
+        <h2>{{user['email']}}</h2>
     </div>
 </main>
 {% endblock %}

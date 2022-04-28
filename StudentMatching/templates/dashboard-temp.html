@@ -1,0 +1,17 @@
+<div class="content horizontal"> 
+    <div class="content vertical">
+        <h2>Upcoming friends</h2>
+        {% for i in matched_friends %}
+            {% with username=i.username, institution=i.institution, match_rate=i.match_rate %}
+                {% include 'partials/friend-quickview.html' %}
+            {% endwith %}
+        {% endfor %}
+        <div class="content" id="friend-quickview">
+
+        </div>
+    </div>
+    <div class="content vertical">
+        <h2>Already friends</h2>
+        <div></div>
+    </div>
+</div>

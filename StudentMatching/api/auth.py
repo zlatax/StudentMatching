@@ -1,25 +1,27 @@
 from flask import Blueprint, render_template, redirect, url_for, session, request
 import bcrypt
 
-from .extensions import mongo, salt
+from ..db import verify_user, add_user
+from ..extensions import mongo, salt
 
 auth = Blueprint('auth', __name__, url_prefix="/auth")
 
-
-
 @auth.route("/login", methods=['post', 'get'])
 def login():
+    if 'user' in session:
+        return redirect(url_for("student.dashboard"))
     if request.method == "POST":
         userEmail = request.form["inputEmail"]
-        entered_password = request.form["inputPassword"]
-        entered_hashed = bcrypt.hashpw(entered_password.encode('utf-8'), salt)
-        user_collection = mongo.db.users
+        password = request.form["inputPassword"]
+        
+        user_found = verify_user(userEmail, password)
 
-        user = user_collection.find_one({'email':userEmail})
-        if user:
-            if user['password'] == entered_hashed:
-                session['user'] = user
-                return redirect(url_for("student.dashboard"))
+        if user_found[0]:
+            session['user'] = user_found[1]
+            return redirect(url_for("student.dashboard"))
+        else:
+            message = "Email Address is not registered or password is not correct!"
+            return render_template("login.html", message=message)
     else:
         return render_template("login.html")
     
@@ -36,24 +38,21 @@ def signup():
         password1 = request.form.get("inputPassword1")
         password2 = request.form.get("inputPassword2")
 
-        user_collection = mongo.db.users
-
-        email_found = user_collection.find_one({"email": email})
-        if email_found:
-            message = 'This email already exists in database'
+        if email is None:
+            message = 'Please enter an email address'
             return render_template('signup.html', message=message)
         if password1 != password2:
             message = 'Passwords should match!'
             return render_template('signup.html', message=message)
         else:
-            hashed = bcrypt.hashpw(password2.encode('utf-8'), salt)
-            user_input = {'name': displayName, 'email': email, 'password': hashed}
-
-            user_collection.insert_one(user_input)
-            
-            user_data = user_collection.find_one({"email": email})
-   
-            return redirect(url_for("student.dashboard"))
+            hashed_password = bcrypt.hashpw(password2.encode('utf-8'), salt)
+            register = add_user(displayName, email, hashed_password)
+            if register[0]:
+                session["user"] = register[1]
+                return redirect(url_for("student.dashboard"))
+            else:
+                message = register[1]
+                return render_template("signup.html", message=message)
     return render_template('signup.html')
 
 @auth.route("/logout")

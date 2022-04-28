@@ -27,7 +27,7 @@ main {
 }
 
 .logged-in {
-    
+    padding:20px 10px;
 }
 
 .horizontal {
@@ -38,14 +38,45 @@ main {
     flex-direction: column;
 }
 
-.center {
-    align-items: center;
-}
-
 .between {
     justify-content: space-between;
 }
 
+.around {
+    justify-content: space-around;
+}
+
+.center {
+    align-items: center;
+}
+
+.base {
+    align-items: baseline;
+}
+
 .content {
     display:flex;
+}
+
+/* Login Page Styling */
+#login-title {
+    font-size:100px;
+    margin:25% 0px;
+}
+
+#login-form {
+    background-color: rgb(255, 255, 255);
+    padding:10px;
+    margin:20% 10px;
+    border-radius: 10px;
+    height:fit-content;
+    width: fit-content;
+}
+
+#login-email, #login-password {
+    width:20rem;
+}
+
+#login-form button {
+    margin:10px 5px 5px 5px;
 }
