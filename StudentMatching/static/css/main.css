@@ -16,7 +16,7 @@ main {
     flex-direction: column;
     align-items: center;
     width:100%;
-    height:100vh;
+    height: 95vh;
     background-color:#90ADCD;
 }
 
@@ -27,7 +27,7 @@ main {
 }
 
 .home {
-    padding:20px 10px;
+    padding:5% 10% 15% 10%;
 }
 
 .logged-in {
@@ -65,13 +65,13 @@ main {
 /* Login Page Styling */
 #login-title {
     font-size:100px;
-    margin:25% 0px;
+    margin:0px 0px;
 }
 
 #login-form {
     background-color: rgb(255, 255, 255);
     padding:10px;
-    margin:20% 10px;
+    margin:0px 10px;
     border-radius: 10px;
     height:fit-content;
     width: fit-content;
@@ -84,3 +84,5 @@ main {
 #login-form button {
     margin:10px 5px 5px 5px;
 }
+
+/* Sign up form styling */

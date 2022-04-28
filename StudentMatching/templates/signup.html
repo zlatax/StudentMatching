@@ -10,11 +10,11 @@ StuMatch - Home
 
 {% block main %}
 <main class="home">
-    <div class="content horizontal between" id="home-content">
+    <div class="content horizontal between center" id="home-content">
         <h1>Sign Up</h1> 
         <div class="container vertical">
             <p>{{message}}</p>
-            <form action="/auth/signup" method="post">
+            <form action="/auth/signup" method="post" id="signup-form">
                 <div class="form-group">
                     <label for="displayName">Display Name (How others find you)</label>
                     <input type="text" class="form-control" name="displayName" placeholder="Enter name">
@@ -25,14 +25,14 @@ StuMatch - Home
                 </div>
                 <div class="form-group">
                     <label for="inputPassword1">Password</label>
-                    <input type="password" name="inputPassword1" id="inputPassword1" class="form-control mx-sm-3">
+                    <input type="password" name="inputPassword1" id="inputPassword1" class="form-control">
                     <small id="passwordHelpInline" class="text-muted">
                       Must be 8-20 characters long.
                     </small>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword2">Password</label>
-                    <input type="password" name="inputPassword2" id="inputPassword2" class="form-control mx-sm-3">
+                    <label for="inputPassword2">Re-enter Password</label>
+                    <input type="password" name="inputPassword2" id="inputPassword2" class="form-control">
                     <small id="passwordHelpInline" class="text-muted">
                         Re-enter password.
                     </small>

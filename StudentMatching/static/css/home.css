@@ -1,9 +1,8 @@
 #home-content {
     height:100%;
     width:100%;
-    margin:auto;
-    padding-left: 5%;
-    padding-right: 5%;
+    align-items: center;
+    padding-top:5%;
 }
 
 #button-getstarted {
@@ -12,22 +11,18 @@
 }
 
 #home-paragraph {
-    position:relative;
-    top:15%;
-    left:10%;
+    height:fit-content;
 }
 
 #home-paragraph h1 {
-    font-size: 96px;
+    font-size: 5.5vw;
 }
 
 #home-paragraph p {
-    font-size: 25px;
+    font-size: 1.5vw;
 }
 
 #home-image { 
-    position:relative;
-    top:10%;
-    height: 500px;
+    height: 30vw;
     width:auto;
 }
