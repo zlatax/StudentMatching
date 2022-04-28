@@ -2,8 +2,6 @@ from dotenv import dotenv_values
 from flask import Flask
 from secrets import token_bytes
 
-from .extensions import mongo, ca
-
 from .main import main
 from .api.student_services import student
 from .api.auth import auth
