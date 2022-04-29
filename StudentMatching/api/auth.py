@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, session, request
+from flask import current_app as app
 import bcrypt
+import logging
 
 from ..db import verify_user, add_user
 from ..extensions import mongo, salt
@@ -16,6 +18,7 @@ def set_user_session(usr):
 @auth.route("/login", methods=['post', 'get'])
 def login():
     if 'user' in session:
+        app.logger.warning("user logged in")
         return redirect(url_for("student.dashboard"))
     if request.method == "POST":
         userEmail = request.form["inputEmail"]
@@ -24,10 +27,12 @@ def login():
         user_found = verify_user(userEmail, password)
 
         if user_found[0]:
+            app.logger.info("login success!")
             set_user_session(user_found[1])
             # session['user'] = user_found[1]
             return redirect(url_for("student.dashboard"))
         else:
+            app.logger.error("user does not exist")
             message = "Email Address is not registered or password is not correct!"
             return render_template("login.html", message=message)
     else:
@@ -37,6 +42,7 @@ def login():
 def signup():
     message = ''
     if "user" in session:
+        app.logger.warning("user logged in")
         return redirect(url_for("student.dashboard"))
     if request.method == "POST":
 
@@ -47,24 +53,29 @@ def signup():
         password2 = request.form.get("inputPassword2")
 
         if email is None:
+            app.logger.error("duplicate emailaddress")
             message = 'Please enter an email address'
             return render_template('signup.html', message=message)
         if password1 != password2:
+            app.logger.error("password missmatch")
             message = 'Passwords should match!'
             return render_template('signup.html', message=message)
         else:
             hashed_password = bcrypt.hashpw(password2.encode(), salt)
             register = add_user(displayName, email, hashed_password)
             if register[0]:
+                app.logger.info("user register success")
                 set_user_session(register[1])
                 # session["user"] = register[1]
                 return redirect(url_for("student.dashboard"))
             else:
+                app.logger.error("user register failure")
                 message = register[1]
                 return render_template("signup.html", message=message)
     return render_template('signup.html')
 
 @auth.route("/logout")
 def logout():
+    app.logger.info("user logout")
     session.clear()
     return render_template('home.html')
