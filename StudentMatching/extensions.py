@@ -1,6 +1,5 @@
 from flask_pymongo import PyMongo
 import bcrypt
-import certifi
 
 import json
 from bson import ObjectId
@@ -15,6 +14,5 @@ class JSONEncoder(json.JSONEncoder):
 
 mongo = PyMongo()
 salt = bcrypt.gensalt()
-ca = certifi.where()
 
 
